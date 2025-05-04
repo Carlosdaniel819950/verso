@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Versos de Carlos</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="icone.jpg" type="image/jpg">
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Versos de Carlos</h1>
+        <nav>
+            <a href="#sobre">Sobre o autor</a>
+            <a href="#poemas">Poemas</a>
+            <a href="#redes">Redes Sociais</a>
+            <button onclick="mudarTema()">Trocar Tema</button>
+            <button onclick="sair()">Sair</button>
+        </nav>
+    </header>
+
+    <section id="sobre">
+        <h2>Sobre o autor</h2>
+        <p>Sou Carlos Daniel, apaixonado por tecnologia e poesia. Escrevo versos que misturam alma, força e reflexão.</p>
+    </section>
+
+    <section id="poemas">
+        <h2>Poemas</h2>
+        <article>
+            <h3>Além de Códigos</h3>
+            <p>Entre linhas e comandos,<br>
+            Me perco e me encontro,<br>
+            Em versos que compilam,<br>
+            Mas tocam fundo e contam o quanto sou pronto,<br>
+            Pronto para Programar,<br>
+            Pronto para fazer o que ama,<br>
+            Mas sempre pronto para aprender e ensinar.</p>
+            <button onclick="trocarPoema()">Próximo poema</button>    
+        </article>
+
+        <article>
+            <h3>Força no Silêncio</h3>
+            <p>O peso não me assusta,<br>
+            A dor é companheira,<br>
+            Enquanto o mundo fala,<br>
+            Minha mente incendeia,<br>
+            Sempre cheia de ideias,<br>
+            Me fará voar,<br>
+            Pois grandes pensadores,<br>
+            Há o mundo a conquistar.</p>
+        </article>
+
+        <section class="galeria-poemas">
+            <div class="imagem-poema">
+              <img src="imagem 1.jpg" alt="Poema 1">
+              <a href="imagem 1.jpg" download><button>Baixar</button></a>
+            </div>
+            <div class="imagem-poema">
+              <img src="imagem força.jpg" alt="Poema 2">
+              <a href="imagem força.jpg" download><button>Baixar</button></a>
+            </div>
+        </section>
+    </section>
+
+    <section id="redes">
+        <h2>Minhas Redes</h2>
+        <ul>
+            <li><a href="https://www.instagram.com/carlos_daniel_paulo/" target="_blank">Instagram</a></li>
+            <li><a href="https://www.linkedin.com/in/carlos-daniel-367a2b363/" target="_blank">LinkedIn</a></li>
+            <li><a href="mailto:carlosdanielpaulo999@gmail.com">E-mail</a></li>
+        </ul>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Carlos Daniel</p>
+    </footer>
+
+    <script src="script.js"></script>
+
+    <!-- Firebase Config + Proteção -->
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyBE8Em_AmKMn4xeg7TrvUVXsWBlaLVNWME",
+            authDomain: "blog-web-128a5.firebaseapp.com",
+            projectId: "blog-web-128a5",
+            storageBucket: "blog-web-128a5.appspot.com",
+            messagingSenderId: "341225800245",
+            appId: "1:341225800245:web:f1e1b6b98493e73f79a77c"
+        };
+
+        const app = firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+
+        // Verificar se o usuário está logado, senão redireciona para o login
+        auth.onAuthStateChanged((user) => {
+            if (!user) {
+                window.location.href = "index.html"; // Redireciona para a página de login
+            }
+        });
+
+        function sair() {
+            auth.signOut().then(() => {
+                window.location.href = "index.html"; // Redireciona para a página de login ao sair
+            });
+        }
+    </script>
+</body>
+</html>

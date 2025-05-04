@@ -2,40 +2,73 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Login com Google - Firebase</title>
-  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
-  <link rel="stylesheet" href="login.css">
-</head>
-<body>
-  <h1>Login com Google</h1>
-  <button onclick="loginComGoogle()">Entrar com Google</button>
+  <title>Login - Firebase</title>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+    import { getAuth, GoogleAuthProvider, signInWithPopup, createUserWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-analytics.js";
 
-  <script>
-    // Cole aqui suas credenciais reais do Firebase
     const firebaseConfig = {
-      apiKey: "SUA_API_KEY",
-      authDomain: "SEU_PROJETO.firebaseapp.com",
-      projectId: "SEU_PROJECT_ID",
-      appId: "SEU_APP_ID"
+      apiKey: "AIzaSyBE8Em_AmKMn4xeg7TrvUVXsWBlaLVNWME",
+      authDomain: "blog-web-128a5.firebaseapp.com",
+      projectId: "blog-web-128a5",
+      storageBucket: "blog-web-128a5.appspot.com",
+      messagingSenderId: "341225800245",
+      appId: "1:341225800245:web:f1e1b6b98493e73f79a77c",
+      measurementId: "G-M88JMW8E42"
     };
 
-    // Inicializar Firebase
-    firebase.initializeApp(firebaseConfig);
-    const auth = firebase.auth();
-    const provider = new firebase.auth.GoogleAuthProvider();
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const analytics = getAnalytics(app);
+    const provider = new GoogleAuthProvider();
 
-    function loginComGoogle() {
-      auth.signInWithPopup(provider)
+    // Verifica se o usuário já está logado
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        window.location.href = "painel.html"; // Redireciona se o usuário já estiver logado
+      }
+    });
+
+    // Função para login com Google
+    window.loginComGoogle = function () {
+      signInWithPopup(auth, provider)
         .then((result) => {
           const user = result.user;
-          alert("Bem-vindo, " + user.displayName + " (" + user.email + ")");
+          window.location.href = "painel.html"; // Redireciona após login bem-sucedido
         })
         .catch((error) => {
           console.error(error);
           alert("Erro ao fazer login: " + error.message);
         });
     }
+
+    // Função para cadastro
+    window.cadastrarUsuario = function () {
+      const email = prompt("Digite seu e-mail para cadastro:");
+      const senha = prompt("Digite sua senha:");
+
+      createUserWithEmailAndPassword(auth, email, senha)
+        .then((userCredential) => {
+          const user = userCredential.user;
+          alert("Cadastro realizado com sucesso!");
+          window.location.href = "painel.html"; // Redireciona após cadastro bem-sucedido
+        })
+        .catch((error) => {
+          console.error(error);
+          alert("Erro ao cadastrar: " + error.message);
+        });
+    }
   </script>
+
+  <link rel="stylesheet" href="login.css">
+</head>
+<body>
+  <div class="login-container">
+    <h1>Login</h1>
+    <button onclick="loginComGoogle()">Entrar com Google</button>
+    <br><br>
+    <button onclick="cadastrarUsuario()">Cadastrar</button>
+  </div>
 </body>
 </html>
