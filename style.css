@@ -1,0 +1,174 @@
+body {
+    background-color: #000;      /* Fundo preto */
+    color: #fff;                 /* Texto branco */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  a, h1, h2, h3, p, button {
+    color: #fff;
+  }
+  button {
+    background-color: #222;       /* Botão escuro */
+    color: #fff;
+    border: 1px solid #555;
+  }
+  
+  button:hover {
+    background-color: #444;
+  }
+header {
+    text-align: center;
+    padding: 20px;
+    background-color: #111;
+    border-bottom: 2px solid #333;
+  }
+  
+  header h1 {
+    color: #ffcc00;
+    font-size: 2.5em;
+  }
+  
+  header p {
+    color: #ccc;
+    font-style: italic;
+  }
+  
+  
+nav a {
+    margin: 0 15px;
+    color: white;
+    text-decoration: none;
+}
+section {
+    padding: 20px;
+}
+footer {
+    background-color: #eee;
+    text-align: center;
+    padding: 10px;
+}
+.dark-themer {
+    background-color: #121212;
+    color: #f0f0f0;
+}
+.dark-themer header {
+    background-color: #222;
+}
+.dark-themer nav a {
+    color: #f0f0f0;
+}
+.dark-themer footer{
+    background-color: #333;
+}
+nav a, nav button{
+    margin: 0 10px;
+    color: white;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+article {
+    background-color: #111;    /* fundo quase preto */
+    color: #fff;               /* texto branco */
+    padding: 20px;
+    border-radius: 10px;
+    margin: 10px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+    width: 300px;
+  }
+.dark-themer section article {
+    background-color:  #1f1f1f;
+    border-left: 3px solid #00bfff;
+}
+body {
+    font-family: 'Georgia', serif;
+    line-height: 1.6;
+}
+
+#poema-container {
+    background-color: #fdf6e3;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.dark-theme #poema-container {
+    background-color: #2c2c2c;
+    color: #f0f0f0;
+}
+#redes ul {
+    list-style: none;
+    padding: 0;
+}
+
+#redes li {
+    margin: 10px 0;
+}
+
+#redes a {
+    color: #0077cc;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#redes a:hover {
+    text-decoration: underline;
+}
+#redes i {
+    margin-right: 8px;
+    color: #0077cc;
+}
+#botao-insta {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    color: white;
+    border-radius: 50%;
+    padding: 15px;
+    font-size: 24px;
+    z-index: 1000;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    transition: transform 0.2s;
+}
+
+#botao-insta:hover {
+    transform: scale(1.1);
+}
+.galeria-poemas {
+    display: flex;
+    flex-wrap: wrap; /* quebra linha se a tela for pequena */
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  .imagem-poema {
+    max-width: 400px;
+    text-align: center;
+  }
+  
+  .imagem-poema img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+  }
+  
+  .imagem-poema button {
+    margin-top: 10px;
+    padding: 8px 16px;
+    background-color: #0077cc;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .imagem-poema button:hover {
+    background-color: #005999;
+  }
+ 
