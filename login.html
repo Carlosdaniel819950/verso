@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Login com Google - Firebase</title>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
+</head>
+<body>
+  <h1>Login com Google</h1>
+  <button onclick="loginComGoogle()">Entrar com Google</button>
+
+  <script>
+    // Cole aqui suas credenciais reais do Firebase
+    const firebaseConfig = {
+      apiKey: "SUA_API_KEY",
+      authDomain: "SEU_PROJETO.firebaseapp.com",
+      projectId: "SEU_PROJECT_ID",
+      appId: "SEU_APP_ID"
+    };
+
+    // Inicializar Firebase
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+    const provider = new firebase.auth.GoogleAuthProvider();
+
+    function loginComGoogle() {
+      auth.signInWithPopup(provider)
+        .then((result) => {
+          const user = result.user;
+          alert("Bem-vindo, " + user.displayName + " (" + user.email + ")");
+        })
+        .catch((error) => {
+          console.error(error);
+          alert("Erro ao fazer login: " + error.message);
+        });
+    }
+  </script>
+</body>
+</html>
